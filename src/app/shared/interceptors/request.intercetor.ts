@@ -16,11 +16,13 @@ export class RequestInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log(req);
+    const url = req.url;
 
-    req = req.clone({
-      url: this.buildUrl(req.url),
-    });
+    if (!url.includes('https://')) {
+      req = req.clone({
+        url: this.buildUrl(req.url),
+      });
+    }
 
     return next.handle(req);
   }

@@ -1,0 +1,28 @@
+@import "../../../assets/scss/mixins.scss";
+
+.pokemons {
+  display: flex;
+  flex-direction: column;
+
+  @include md {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}
+
+.loader-container {
+  width: 100%;
+  height: calc(100vh - 140px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list {
+  width: 100%;
+
+  @include md {
+    width: 45%;
+  }
+}

@@ -1,0 +1,23 @@
+<div id="pokemon-list" class="pokemon-list-container">
+  <ul
+    class="pokemon-list"
+    appInfiniteScroll
+    (endElementEmitter)="getMorePokemons()"
+  >
+    <ng-container *ngFor="let pokemon of pokemons.results">
+      <li
+        class="pokemon-list__li"
+        [ngClass]="{
+          'pokemon-list__li-selected': pokemonSelected?.id === pokemon.id
+        }"
+        (click)="selectPokemon(pokemon)"
+      >
+        <img [src]="getPokemonImage(pokemon)" />
+        <span>#{{ pokemon.id }} {{ pokemon.name }}</span>
+      </li>
+    </ng-container>
+    <li class="loader-container" *ngIf="isLoading">
+      <app-loader size="small"></app-loader>
+    </li>
+  </ul>
+</div>

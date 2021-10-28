@@ -1,0 +1,19 @@
+<div id="pokemons" class="pokemons">
+  <ng-container *ngIf="isLoading; else application">
+    <div class="loader-container">
+      <app-loader></app-loader>
+    </div>
+  </ng-container>
+
+  <ng-template #application>
+    <div class="list">
+      <app-pokemons-list
+        [pokemons]="pokemons"
+        (getMorePokemonsEmitter)="getMorePokemons()"
+      ></app-pokemons-list>
+    </div>
+    <div class="detail">
+      <app-pokemon-detail></app-pokemon-detail>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,28 @@
+.footer {
+  width: 100%;
+
+  background-color: var(--primary);
+  border-top: 1px solid var(--secondary);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px 10px;
+
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
+
+  &__info-container {
+    width: 80%;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    & > span {
+      font-family: "Poppins", sans-serif;
+
+      color: var(--text);
+    }
+  }
+}
