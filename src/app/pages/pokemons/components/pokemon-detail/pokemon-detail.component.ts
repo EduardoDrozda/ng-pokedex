@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AnimationUtils, PokemonUtils } from 'src/app/shared/utils';
+import { IPokemonDetail } from '../../models';
 
 @Component({
   selector: 'app-pokemon-detail',
   templateUrl: './pokemon-detail.component.html',
-  styleUrls: ['./pokemon-detail.component.scss']
+  styleUrls: ['./pokemon-detail.component.scss'],
+  animations: [AnimationUtils.fadeAnimation()]
 })
-export class PokemonDetailComponent implements OnInit {
+export class PokemonDetailComponent {
+  @Input() pokemon!: IPokemonDetail;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  getPokemonImage() {
+    return PokemonUtils.getPokemonImage(this.pokemon);
   }
 
+  getPokemonName() {
+    return PokemonUtils.getPokemonName(this.pokemon);
+  }
 }

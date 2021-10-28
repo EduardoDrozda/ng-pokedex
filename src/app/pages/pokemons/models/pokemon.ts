@@ -11,4 +11,7 @@ export interface IPokemonDetail {
 
 export interface ISprite {
   front_default: string;
+  other: {
+    'official-artwork': { front_default: string };
+  };
 }

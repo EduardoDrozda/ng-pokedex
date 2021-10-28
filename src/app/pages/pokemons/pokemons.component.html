@@ -10,10 +10,13 @@
       <app-pokemons-list
         [pokemons]="pokemons"
         (getMorePokemonsEmitter)="getMorePokemons()"
+        (pokemonSelectedEmiiter)="setPokemonSelected($event)"
       ></app-pokemons-list>
     </div>
     <div class="detail">
-      <app-pokemon-detail></app-pokemon-detail>
+      <app-pokemon-detail
+        [pokemon]="pokemonSelected"
+      ></app-pokemon-detail>
     </div>
   </ng-template>
 </div>

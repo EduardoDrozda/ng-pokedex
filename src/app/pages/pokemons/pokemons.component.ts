@@ -4,19 +4,17 @@ import { SubSink } from 'subsink';
 import { IPokemonDetail, IPokemonList } from './models';
 import { PokemonsService } from './services/pokemons.service';
 
-import { finalize, map, mergeMap, tap, toArray } from 'rxjs/operators';
-import { from, Observable, of } from 'rxjs';
-
 @Component({
   selector: 'app-pokemons',
   templateUrl: './pokemons.component.html',
-  styleUrls: ['./pokemons.component.scss'],
+  styleUrls: ['./pokemons.component.scss']
 })
 export class PokemonsComponent implements OnDestroy, OnInit {
   private subs = new SubSink();
 
   pokemons!: IPagination<IPokemonDetail>;
   pokemonsDetail: IPokemonDetail[] = [];
+  pokemonSelected!: IPokemonDetail;
 
   isLoading = true;
 
@@ -62,5 +60,9 @@ export class PokemonsComponent implements OnDestroy, OnInit {
   getMorePokemons() {
     this.offset = this.offset + this.limit;
     this.getPokemons();
+  }
+
+  setPokemonSelected(pokemon: IPokemonDetail) {
+    this.pokemonSelected = pokemon;
   }
 }

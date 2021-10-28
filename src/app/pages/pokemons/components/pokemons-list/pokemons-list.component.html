@@ -12,8 +12,8 @@
         }"
         (click)="selectPokemon(pokemon)"
       >
-        <img [src]="getPokemonImage(pokemon)" />
-        <span>#{{ pokemon.id }} {{ pokemon.name }}</span>
+        <img class="pokemon-image" [src]="getPokemonImage(pokemon)" />
+        <span>{{ getPokemonName(pokemon) }}</span>
       </li>
     </ng-container>
     <li class="loader-container" *ngIf="isLoading">

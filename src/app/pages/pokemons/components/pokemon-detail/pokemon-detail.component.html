@@ -1,1 +1,4 @@
-<p>pokemon-detail works!</p>
+<div id="pokemon-detail" class="pokemon-detail" [@enterAnimation]="pokemon">
+  <img class="pokemon-detail__sprite" [src]="getPokemonImage()" alt="Image of pokemon selected"/>
+  <h3 class="pokemon-detail__name">{{ getPokemonName() }}</h3>
+</div>

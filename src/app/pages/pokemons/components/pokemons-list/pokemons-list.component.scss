@@ -1,10 +1,9 @@
 @import "../../../../../assets/scss/mixins.scss";
 
 .pokemon-list-container {
-  border: 0.4px solid var(--secondary);
   width: 100%;
 
-  border-radius: 5px;
+  border-top-left-radius: 5px;
   margin-bottom: 10px;
 
   .pokemon-list {
@@ -13,6 +12,8 @@
 
     max-height: 400px;
     overflow: auto;
+
+    background-color: var(--text);
 
     &::-webkit-scrollbar {
       width: 12px;
@@ -27,7 +28,7 @@
     }
 
     &__li {
-      border-bottom: 0.4px solid var(--secondary);
+      border-bottom: 0.1px solid var(--border-color);
       padding: 5px;
       width: 100%;
 
@@ -65,6 +66,10 @@
         letter-spacing: 3px;
       }
     }
+  }
+
+  .pokemon-image {
+    width: 60px;
   }
 }
 

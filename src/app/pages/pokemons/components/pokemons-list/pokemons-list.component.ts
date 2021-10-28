@@ -1,6 +1,15 @@
-import { Component, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { IPagination } from 'src/app/shared/models';
-import { IPokemonDetail, IPokemonList } from '../../models';
+import { PokemonUtils } from 'src/app/shared/utils';
+import { IPokemonDetail } from '../../models';
 
 @Component({
   selector: 'app-pokemons-list',
@@ -24,7 +33,11 @@ export class PokemonsListComponent implements OnInit, OnChanges {
   }
 
   getPokemonImage(pokemon: IPokemonDetail) {
-    return pokemon.sprites.front_default;
+    return PokemonUtils.getPokemonImage(pokemon);
+  }
+
+  getPokemonName(pokemon: IPokemonDetail) {
+    return PokemonUtils.getPokemonName(pokemon);
   }
 
   selectPokemon(pokemon: IPokemonDetail) {
