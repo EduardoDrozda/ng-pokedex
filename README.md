@@ -137,3 +137,6 @@ ng-pokedex
 ### Mobile
 
 ![](src/assets/img/preview/ng-pokedex-desktop-mobile.png)
+
+
+[Live demo](https://ng-pokedex-effr0qgrq-ng-pokedex.vercel.app/pokemons)
