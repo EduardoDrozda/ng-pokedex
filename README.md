@@ -128,7 +128,7 @@ ng-pokedex
 
 ## Preview
 
-[Live demo](https://ng-pokedex-effr0qgrq-ng-pokedex.vercel.app/pokemons)
+[Live demo](https://ng-pokedex.vercel.app/pokemons)
 
 ### Desktop
 
