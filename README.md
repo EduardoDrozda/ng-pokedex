@@ -128,6 +128,8 @@ ng-pokedex
 
 ## Preview
 
+[Live demo](https://ng-pokedex-effr0qgrq-ng-pokedex.vercel.app/pokemons)
+
 ### Desktop
 
 ![](src/assets/img/preview/ng-pokedex-desktop.png)
@@ -138,5 +140,3 @@ ng-pokedex
 
 ![](src/assets/img/preview/ng-pokedex-desktop-mobile.png)
 
-
-[Live demo](https://ng-pokedex-effr0qgrq-ng-pokedex.vercel.app/pokemons)
