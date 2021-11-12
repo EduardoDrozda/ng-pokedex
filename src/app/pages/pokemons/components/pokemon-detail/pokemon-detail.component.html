@@ -1,4 +1,41 @@
-<div id="pokemon-detail" class="pokemon-detail" [@enterAnimation]="pokemon">
-  <img class="pokemon-detail__sprite" [src]="getPokemonImage()" alt="Image of pokemon selected"/>
-  <h3 class="pokemon-detail__name">{{ getPokemonName() }}</h3>
+<div id="pokemon-detail" class="pokemon-detail">
+  <img
+    [@enterAnimation]="pokemon"
+    class="pokemon-detail__sprite"
+    [src]="getPokemonImage()"
+    alt="Image of pokemon selected"
+  />
+  <h3 [@enterAnimation]="pokemon" class="pokemon-detail__name">
+    {{ getPokemonName() }}
+  </h3>
+
+  <div id="tabs" class="pokemon-detail__tabs">
+    <button
+      class="pokemon-detail__tabs-button"
+      [ngClass]="{
+        'pokemon-detail__tabs-button--selected': tabSelected === tab.id
+      }"
+      *ngFor="let tab of tabs"
+      (click)="openTabSelected(tab.id)"
+    >
+      {{ tab.name }}
+    </button>
+  </div>
+
+  <ng-container [ngSwitch]="tabSelected">
+    <div class="pokemon-detail__info">
+      <div [@enterAnimation]="tabSelected">
+        <ng-container *ngSwitchCase="'base_stats'">
+          <ng-container *ngFor="let stats of pokemon.stats">
+            <div class="pokemon-detail__stats">
+              <span class="pokemon-detail__stats-title">{{
+                getPokemonStatName(stats)
+              }}</span>
+              <span>{{ stats.base_stat }}</span>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
 </div>

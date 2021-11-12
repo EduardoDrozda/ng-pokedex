@@ -1,27 +1,139 @@
-# NgPokedex
+# Ng Pokedex
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7.
+This project is intended to improve my knowledge of the Angular framework and its entire ecosystem (Sass, Css, Control Value Accessor, Directives, etc.).
 
-## Development server
+## TO DO
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- ✔️ Integration with poke api.
+- ✔️ Pokemon List with infite scroll.
+- ✔️ Search pokémons by name.
+- ✔️ Show pokémon base stats.
+- ❌ Show more information about pokemons.
+- - ❌ Moves
+- - ❌ Evolutions
+- ❌ Show more informations about berries, 
+- ❌ Show more information about games.
+- ❌ Unit tests.
+- ❌ Github pipes.
 
-## Code scaffolding
+## Architecture 
+```
+ng-pokedex
+├─ .browserslistrc
+├─ .editorconfig
+├─ .gitignore
+├─ angular.json
+├─ karma.conf.js
+├─ package-lock.json
+├─ package.json
+├─ README.md
+├─ src
+│  ├─ app
+│  │  ├─ app-routing.module.ts
+│  │  ├─ app.component.html
+│  │  ├─ app.component.scss
+│  │  ├─ app.component.spec.ts
+│  │  ├─ app.component.ts
+│  │  ├─ app.module.ts
+│  │  ├─ pages
+│  │  │  └─ pokemons
+│  │  │     ├─ components
+│  │  │     │  ├─ pokemon-detail
+│  │  │     │  │  ├─ pokemon-detail.component.html
+│  │  │     │  │  ├─ pokemon-detail.component.scss
+│  │  │     │  │  ├─ pokemon-detail.component.spec.ts
+│  │  │     │  │  └─ pokemon-detail.component.ts
+│  │  │     │  └─ pokemons-list
+│  │  │     │     ├─ pokemons-list.component.html
+│  │  │     │     ├─ pokemons-list.component.scss
+│  │  │     │     ├─ pokemons-list.component.spec.ts
+│  │  │     │     └─ pokemons-list.component.ts
+│  │  │     ├─ models
+│  │  │     │  ├─ index.ts
+│  │  │     │  └─ pokemon.ts
+│  │  │     ├─ pokemons.component.html
+│  │  │     ├─ pokemons.component.scss
+│  │  │     ├─ pokemons.component.spec.ts
+│  │  │     ├─ pokemons.component.ts
+│  │  │     ├─ pokemons.module.ts
+│  │  │     └─ services
+│  │  │        ├─ pokemons.service.spec.ts
+│  │  │        └─ pokemons.service.ts
+│  │  └─ shared
+│  │     ├─ components
+│  │     │  ├─ footer
+│  │     │  │  ├─ footer.component.html
+│  │     │  │  ├─ footer.component.scss
+│  │     │  │  ├─ footer.component.spec.ts
+│  │     │  │  └─ footer.component.ts
+│  │     │  ├─ header
+│  │     │  │  ├─ header.component.html
+│  │     │  │  ├─ header.component.scss
+│  │     │  │  ├─ header.component.spec.ts
+│  │     │  │  └─ header.component.ts
+│  │     │  ├─ input
+│  │     │  │  ├─ input.component.html
+│  │     │  │  ├─ input.component.scss
+│  │     │  │  ├─ input.component.spec.ts
+│  │     │  │  └─ input.component.ts
+│  │     │  └─ loader
+│  │     │     ├─ loader.component.html
+│  │     │     ├─ loader.component.scss
+│  │     │     ├─ loader.component.spec.ts
+│  │     │     └─ loader.component.ts
+│  │     ├─ directives
+│  │     │  └─ infinite-scroll
+│  │     │     ├─ infinite-scroll.directive.spec.ts
+│  │     │     └─ infinite-scroll.directive.ts
+│  │     ├─ interceptors
+│  │     │  ├─ index.ts
+│  │     │  └─ request.intercetor.ts
+│  │     ├─ models
+│  │     │  ├─ index.ts
+│  │     │  └─ pagination.ts
+│  │     ├─ services
+│  │     ├─ tokens
+│  │     │  ├─ apiUrl.token.ts
+│  │     │  └─ index.ts
+│  │     └─ utils
+│  │        ├─ AnimationsUtils.ts
+│  │        ├─ index.ts
+│  │        └─ PokemonUtils.ts
+│  ├─ assets
+│  │  ├─ .gitkeep
+│  │  ├─ img
+│  │  │  └─ png
+│  │  │     ├─ logo.png
+│  │  │     └─ pokeball.png
+│  │  └─ scss
+│  │     ├─ breakpoints.scss
+│  │     ├─ fonts.scss
+│  │     ├─ mixins.scss
+│  │     ├─ style.scss
+│  │     └─ theme.scss
+│  ├─ environments
+│  │  ├─ environment.prod.ts
+│  │  └─ environment.ts
+│  ├─ favicon.ico
+│  ├─ index.html
+│  ├─ main.ts
+│  ├─ polyfills.ts
+│  ├─ styles.scss
+│  └─ test.ts
+├─ tsconfig.app.json
+├─ tsconfig.json
+├─ tsconfig.spec.json
+└─ yarn.lock
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Preview
 
-## Build
+### Desktop
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+![](src/assets/img/preview/ng-pokedex-desktop.png)
 
-## Running unit tests
+![](src/assets/img/preview/ng-pokedex-desktop-search.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Mobile
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![](src/assets/img/preview/ng-pokedex-desktop-mobile.png)

@@ -9,8 +9,9 @@
     <div class="list">
       <app-pokemons-list
         [pokemons]="pokemons"
-        (getMorePokemonsEmitter)="getMorePokemons()"
-        (pokemonSelectedEmiiter)="setPokemonSelected($event)"
+        (getMorePokemon)="getMorePokemons()"
+        (getPokemonSelected)="setPokemonSelected($event)"
+        (getPokemonByName)="getPokemonByName($event)"
       ></app-pokemons-list>
     </div>
     <div class="detail">

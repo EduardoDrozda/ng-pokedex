@@ -1,23 +1,37 @@
-<div id="pokemon-list" class="pokemon-list-container">
-  <ul
-    class="pokemon-list"
-    appInfiniteScroll
-    (endElementEmitter)="getMorePokemons()"
-  >
-    <ng-container *ngFor="let pokemon of pokemons.results">
-      <li
-        class="pokemon-list__li"
-        [ngClass]="{
-          'pokemon-list__li-selected': pokemonSelected?.id === pokemon.id
-        }"
-        (click)="selectPokemon(pokemon)"
-      >
-        <img class="pokemon-image" [src]="getPokemonImage(pokemon)" />
-        <span>{{ getPokemonName(pokemon) }}</span>
+<div id="pokemon-list">
+  <div class="pokemon-list__search-container">
+    <form [formGroup]="form">
+      <app-input
+        formControlName="name"
+        id="search-input"
+        placeholder="Insert pokemon's name"
+        [cleareable]="true"
+        [isLoading]="isLoading"
+        type="text"
+      ></app-input>
+    </form>
+  </div>
+  <div class="pokemon-list-container">
+    <ul
+      class="pokemon-list"
+      appInfiniteScroll
+      (endElementEmitter)="getMorePokemons()"
+    >
+      <ng-container *ngFor="let pokemon of pokemons.results">
+        <li
+          class="pokemon-list__li"
+          [ngClass]="{
+            'pokemon-list__li-selected': pokemonSelected?.id === pokemon.id
+          }"
+          (click)="selectPokemon(pokemon)"
+        >
+          <img class="pokemon-image" [src]="getPokemonImage(pokemon)" />
+          <span>{{ getPokemonName(pokemon) }}</span>
+        </li>
+      </ng-container>
+      <li class="loader-container" *ngIf="isLoading">
+        <app-loader size="small"></app-loader>
       </li>
-    </ng-container>
-    <li class="loader-container" *ngIf="isLoading">
-      <app-loader size="small"></app-loader>
-    </li>
-  </ul>
+    </ul>
+  </div>
 </div>

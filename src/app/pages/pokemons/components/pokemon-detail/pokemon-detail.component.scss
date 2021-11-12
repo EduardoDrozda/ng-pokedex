@@ -1,8 +1,7 @@
 @import "../../../../../assets/scss/mixins.scss";
 
 .pokemon-detail {
-  border: 0.1px solid var(--border-color);
-  background-color: var(--text);
+  background-color: var(--primary);
   border-radius: 5px;
 
   width: 100%;
@@ -25,10 +24,95 @@
   }
 
   &__name {
+    color: var(--text);
     text-transform: capitalize;
     font-family: "Poppins", sans-serif;
     letter-spacing: 3px;
 
     margin: 5px;
+  }
+
+  &__tabs {
+    margin-top: 5px;
+    width: 100%;
+
+    &-button {
+      padding: 10px;
+      font-family: "Poppins", sans-serif;
+      letter-spacing: 3px;
+      border: none;
+
+      background-color: var(--primary);
+      color: var(--text);
+
+      border-radius: 5px 5px 0 0;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &:hover {
+        background-color: var(--primary-dark);
+        cursor: pointer;
+      }
+
+      &:active {
+        background-color: var(--primary);
+      }
+
+      &--selected {
+        background-color: var(--primary-dark);
+      }
+    }
+  }
+
+  &__info {
+    background-color: var(--background);
+
+    border-bottom: 0.1px solid var(--border-color);
+    border-left: 0.1px solid var(--border-color);
+    border-right: 0.1px solid var(--border-color);
+
+    border-end-end-radius: 5px;
+
+    padding: 20px;
+    width: 100%;
+
+    .pokemon-detail__stats {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5px 0;
+
+      font-family: "Poppins", sans-serif;
+      font-size: 1rem;
+
+      &:hover {
+        color: var(--primary-dark);
+      }
+
+      &:first-child {
+        margin: 0 0 5px 0;
+      }
+
+      &:last-child {
+        margin: 5px 0 0 0;
+      }
+
+      &-title {
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+
+      @include md {
+        width: 60%;
+        font-size: 1.3rem;
+      }
+    }
   }
 }

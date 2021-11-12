@@ -1,0 +1,23 @@
+<div class="input__container">
+  <div class="input__icon-container">
+    <img
+      class="input__icon"
+      src="assets/img/png/pokeball.png"
+      alt="pokeball icon"
+      [ngClass]="{ 'input__icon--loading': isLoading }"
+    />
+  </div>
+  <input
+    [id]="id"
+    [type]="type"
+    [placeholder]="placeholder"
+    class="input"
+    [(ngModel)]="value"
+    (ngModelChange)="onChange($event)"
+  />
+  <ng-container *ngIf="cleareable">
+    <div class="input__clear-icon-container">
+      <span class="input__clear_icon" (click)="clearValue()">&times;</span>
+    </div>
+  </ng-container>
+</div>

@@ -6,6 +6,8 @@ import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-deta
 import { PokemonsListComponent } from './components/pokemons-list/pokemons-list.component';
 import { LoaderComponent } from 'src/app/shared/components/loader/loader.component';
 import { InfiniteScrollDirective } from 'src/app/shared/directives/infinite-scroll/infinite-scroll.directive';
+import { InputComponent } from 'src/app/shared/components/input/input.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -20,8 +22,14 @@ const routes: Routes = [
     PokemonDetailComponent,
     PokemonsListComponent,
     LoaderComponent,
-    InfiniteScrollDirective
+    InfiniteScrollDirective,
+    InputComponent,
   ],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class PokemonsModule {}

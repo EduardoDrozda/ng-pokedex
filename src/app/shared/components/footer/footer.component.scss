@@ -1,3 +1,5 @@
+@import '../../../../assets/scss/mixins.scss';
+
 .footer {
   width: 100%;
 
@@ -16,13 +18,17 @@
     width: 80%;
 
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
 
     & > span {
       font-family: "Poppins", sans-serif;
 
       color: var(--text);
+    }
+
+    @include sm {
+      justify-content: flex-end;
     }
   }
 }

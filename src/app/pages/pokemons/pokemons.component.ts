@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { IPagination } from 'src/app/shared/models';
 import { SubSink } from 'subsink';
 import { IPokemonDetail, IPokemonList } from './models';
@@ -7,7 +8,7 @@ import { PokemonsService } from './services/pokemons.service';
 @Component({
   selector: 'app-pokemons',
   templateUrl: './pokemons.component.html',
-  styleUrls: ['./pokemons.component.scss']
+  styleUrls: ['./pokemons.component.scss'],
 })
 export class PokemonsComponent implements OnDestroy, OnInit {
   private subs = new SubSink();
@@ -17,9 +18,10 @@ export class PokemonsComponent implements OnDestroy, OnInit {
   pokemonSelected!: IPokemonDetail;
 
   isLoading = true;
-
   offset = 0;
   limit = 10;
+
+  form!: FormGroup;
 
   constructor(private pokemonService: PokemonsService) {}
 
@@ -36,9 +38,8 @@ export class PokemonsComponent implements OnDestroy, OnInit {
       .getPokemons(this.offset, this.limit)
       .toPromise()
       .then(async (res) => {
-        this.pokemons = { ...res, results: [
-          ...this.pokemonsDetail
-        ] };
+        console.log(res);
+        this.pokemons = { ...res, results: [...this.pokemonsDetail] };
         const { results } = res;
         await this.getPokemonsDetail(results);
       })
@@ -64,5 +65,24 @@ export class PokemonsComponent implements OnDestroy, OnInit {
 
   setPokemonSelected(pokemon: IPokemonDetail) {
     this.pokemonSelected = pokemon;
+  }
+
+  getPokemonByName(pokemonName: string) {
+    if (!pokemonName) {
+      return this.getMorePokemons();
+    }
+
+    this.pokemonService
+      .getPokemonByName(pokemonName.toLocaleLowerCase())
+      .subscribe({
+        next: (res) => {
+          this.pokemons = {
+            count: 1,
+            results: [res],
+          };
+
+          this.pokemonSelected = res;
+        }
+      });
   }
 }

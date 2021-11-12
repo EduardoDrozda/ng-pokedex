@@ -8,7 +8,7 @@ import { IPokemonDetail, IPokemonList } from '../models';
   providedIn: 'root',
 })
 export class PokemonsService {
-  private url = 'pokemon';
+  private uri = 'pokemon';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -16,12 +16,17 @@ export class PokemonsService {
     offset: number,
     limit: number
   ): Observable<IPagination<IPokemonList>> {
-    const paginationUrl = `${this.url}?offset=${offset}&limit=${limit}`;
+    const uri = `${this.uri}?offset=${offset}&limit=${limit}`;
 
-    return this.httpClient.get<IPagination<IPokemonList>>(paginationUrl);
+    return this.httpClient.get<IPagination<IPokemonList>>(uri);
   }
 
   getPokemonByUrl(url: string): Observable<IPokemonDetail> {
-    return this.httpClient.get<IPokemonDetail>(url)
+    return this.httpClient.get<IPokemonDetail>(url);
+  }
+
+  getPokemonByName(name: string): Observable<IPokemonDetail> {
+    const uri = `${this.uri}/${name}`;
+    return this.httpClient.get<IPokemonDetail>(uri);
   }
 }

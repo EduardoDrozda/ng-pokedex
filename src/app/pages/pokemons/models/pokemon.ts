@@ -6,7 +6,27 @@ export interface IPokemonList {
 export interface IPokemonDetail {
   id: number;
   name: string;
+  stats: IStats[];
+  moves: IMoves[];
   sprites: ISprite;
+}
+
+export interface IStats {
+  base_stat: number;
+  effort: number;
+  stat: IStat;
+}
+
+interface IStat {
+  name: string;
+}
+
+export interface IMoves {
+  move: IMove;
+}
+
+interface IMove {
+  name: string;
 }
 
 export interface ISprite {

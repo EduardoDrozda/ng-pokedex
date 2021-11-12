@@ -4,7 +4,7 @@
   position: relative;
   overflow: hidden;
   border: 3px solid;
-  animation: frames 0.8s linear 0s infinite;
+  animation: rotate 0.8s linear 0s infinite;
 }
 
 .pokeball__medium {
@@ -64,7 +64,7 @@
 }
 
 /* AnimationFrames */
-@keyframes frames {
+@keyframes rotate {
   0% {
     transform: rotate(0deg);
   }

@@ -7,9 +7,12 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { IPagination } from 'src/app/shared/models';
 import { PokemonUtils } from 'src/app/shared/utils';
 import { IPokemonDetail } from '../../models';
+
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pokemons-list',
@@ -18,17 +21,39 @@ import { IPokemonDetail } from '../../models';
 })
 export class PokemonsListComponent implements OnInit, OnChanges {
   @Input() pokemons!: IPagination<IPokemonDetail>;
-  @Output() pokemonSelectedEmiiter = new EventEmitter<IPokemonDetail>();
-  @Output() getMorePokemonsEmitter = new EventEmitter<void>();
+  @Output() getPokemonSelected = new EventEmitter<IPokemonDetail>();
+  @Output() getMorePokemon = new EventEmitter<void>();
+  @Output() getPokemonByName = new EventEmitter<string>();
+
+  form!: FormGroup;
 
   pokemonSelected!: IPokemonDetail;
   isLoading = false;
 
+  constructor(private formBuilder: FormBuilder) {}
+
   ngOnInit(): void {
     this.selectPokemon(this.pokemons.results[0]);
+    this.buildForm();
   }
 
-  ngOnChanges(): void {
+  private buildForm() {
+    this.form = this.formBuilder.group({
+      name: [''],
+    });
+
+    this.form.valueChanges
+      .pipe(debounceTime(700))
+      .subscribe({
+        next: () => {
+          this.isLoading = true;
+          this.getPokemonByName.emit(this.form.get('name')?.value)
+        },
+      });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.selectPokemon(this.pokemons.results[0]);
     this.isLoading = false;
   }
 
@@ -42,11 +67,11 @@ export class PokemonsListComponent implements OnInit, OnChanges {
 
   selectPokemon(pokemon: IPokemonDetail) {
     this.pokemonSelected = pokemon;
-    this.pokemonSelectedEmiiter.emit(this.pokemonSelected);
+    this.getPokemonSelected.emit(this.pokemonSelected);
   }
 
   getMorePokemons() {
-    this.getMorePokemonsEmitter.emit();
+    this.getMorePokemon.emit();
     this.isLoading = true;
   }
 }
