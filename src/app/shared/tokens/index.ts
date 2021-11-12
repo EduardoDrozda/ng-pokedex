@@ -1,1 +1,1 @@
-export * from './apiurl.token';
+export * from './apiUrl.token';

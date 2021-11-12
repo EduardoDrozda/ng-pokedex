@@ -7,7 +7,7 @@ This project is intended to improve my knowledge of the Angular framework and it
 - ✔️ Integration with poke api.
 - ✔️ Pokemon List with infinite scroll.
 - ✔️ Search pokemons by name.
-- ✔️ Show pokémon base stats.
+- ✔️ Show pokemon base stats.
 - ❌ Show more information about pokemons.
 - - ❌ Moves
 - - ❌ Evolutions
