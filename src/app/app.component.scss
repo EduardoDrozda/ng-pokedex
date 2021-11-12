@@ -4,13 +4,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
 
   main {
     padding: 30px 30px;
-
-    @include md {
-      height: 100%;
-    }
   }
 }
